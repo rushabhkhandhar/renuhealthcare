@@ -3,265 +3,182 @@ import { useEffect, useRef } from "react";
 import React from "react";
 
 const Home = () => {
-  const carouselRef = useRef(null); //to ref particular div
-  const vounteer_corousel_ref = useRef(null);
+  const carouselRef = useRef(null); // to ref particular div
+  const volunteerCarouselRef = useRef(null);
+
+  // GSAP image carousel animation
   useEffect(() => {
     const images = carouselRef.current.children;
     const timeline = gsap.timeline({ repeat: -1 });
 
-    // Hide all images except the first one
     gsap.set(images, { opacity: 0 });
     gsap.set(images[0], { opacity: 1 });
 
-    // Animation to transition between images
-    timeline.to(images[0], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[1], { opacity: 1, duration: 1 });
-    timeline.to(images[1], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[2], { opacity: 1, duration: 1 });
-    timeline.to(images[2], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[3], { opacity: 1, duration: 1 });
-    timeline.to(images[3], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[4], { opacity: 1, duration: 1 });
-    timeline.to(images[4], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[5], { opacity: 1, duration: 1 });
-    timeline.to(images[5], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[6], { opacity: 1, duration: 1 });
-    timeline.to(images[6], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[7], { opacity: 1, duration: 1 });
-    timeline.to(images[7], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[8], { opacity: 1, duration: 1 });
-    timeline.to(images[8], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[0], { opacity: 1, duration: 1 });
+    for (let i = 0; i < images.length; i++) {
+      const nextImage = images[(i + 1) % images.length];
+      timeline.to(images[i], { opacity: 0, duration: 1, delay: 2 });
+      timeline.to(nextImage, { opacity: 1, duration: 1 });
+    }
   }, []);
 
+  // GSAP volunteer carousel animation
   useEffect(() => {
-    const images = vounteer_corousel_ref.current.children;
+    const images = volunteerCarouselRef.current.children;
     const timeline = gsap.timeline({ repeat: -1 });
 
-    // Hide all images except the first one
     gsap.set(images, { opacity: 0 });
     gsap.set(images[0], { opacity: 1 });
 
-    // Animation to transition between images
-    timeline.to(images[0], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[1], { opacity: 1, duration: 1 });
-    timeline.to(images[1], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[2], { opacity: 1, duration: 1 });
-    timeline.to(images[2], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[3], { opacity: 1, duration: 1 });
-    timeline.to(images[3], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[4], { opacity: 1, duration: 1 });
-    timeline.to(images[4], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[5], { opacity: 1, duration: 1 });
-    timeline.to(images[5], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[6], { opacity: 1, duration: 1 });
-    timeline.to(images[6], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[7], { opacity: 1, duration: 1 });
-    timeline.to(images[7], { opacity: 0, duration: 1, delay: 2 });
-    timeline.to(images[0], { opacity: 1, duration: 1 });
+    for (let i = 0; i < images.length; i++) {
+      const nextImage = images[(i + 1) % images.length];
+      timeline.to(images[i], { opacity: 0, duration: 1, delay: 2 });
+      timeline.to(nextImage, { opacity: 1, duration: 1 });
+    }
   }, []);
 
   return (
-    <>
-    <div className="">
-      {/* GSAP corousel  */}
-      <div
-        ref={carouselRef}
-        className="bg-gray-100 h-52 sm:h-96  md:h-[40rem] sm:w-11/12 m-auto relative rounded-sm"
-      >
-        <img
-          src="./HomepageImages/Corousel/Home8.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home2.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home3.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home4.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home1.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home6.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home7.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-        <img
-          src="./HomepageImages/Corousel/Home5.jpg"
-          alt="photos"
-          className="image absolute object-cover h-full w-full overflow-hidden rounded-sm"
-        ></img>
-      </div>
-
-      {/* donation,volunteer,sponsor portion */}
-      <div className="bg-gray-100 mt-5 border  h-50 md:flex w-11/12 m-auto gap-5 space-y-10 md:space-y-0">
-        {/* donation */}
-        <div className=" h-full w-full flex border-blue-300 ">
-          <img
-            className="w-16 h-16 mt-14"
-            src="./HomepageImages/ThreeSlogans/donation.gif"
-            alt="donation"
-          />
-          <div>
-            <h1 className="mb-2 font-semibold text-2xl text-center">
-              Make a Donation
-            </h1>
-            <p className="font-normal">
-              Every drop contributes to the ocean of change. Your donation, no
-              matter how small, holds the power to create ripples of hope and
-              transform lives. Together, let's weave a tapestry of compassion
-              and kindness, making our world a brighter place for all.
-            </p>
-          </div>
-        </div>
-
-        {/* volunteer */}
-        <div className=" h-full w-full flex ">
-          <img
-            className="w-16 h-16 mt-14"
-            src="./HomepageImages/ThreeSlogans/volunteer.gif"
-            alt="donation"
-          />
-          <div>
-            <h1 className="mb-2  font-semibold text-2xl text-center">
-              Become a volunteer
-            </h1>
-            <p className="font-normal">
-              Become the heartbeat of change. As a volunteer in our NGO, you're
-              not just lending your time; you're igniting a movement of
-              compassion and empowerment. Join hands with us to paint a brighter
-              tomorrow, one act of service at a time.
-            </p>
-          </div>
-        </div>
-
-        {/* sponsorship */}
-        <div className="h-full  w-full flex">
-          <img
-            className="w-16 h-16 mt-14"
-            src="./HomepageImages/ThreeSlogans/sponsor.gif"
-            alt="donation"
-          />
-          <div>
-            <h1 className="mb-2 font-semibold text-2xl text-center">
-              Sponsorship
-            </h1>
-            <p className="font-normal">
-              Fuel the journey of impact. By sponsoring our cause, you're not
-              just investing in a project; you're investing in the future of
-              communities, in dreams yet to be realized. Together, let's create
-              a legacy of empowerment and transformation.
-            </p>
-          </div>
+    <div className="bg-gray-100 pb-10">
+      {/* Main carousel section */}
+      <div className="w-11/12 mx-auto my-6">
+        <div
+          ref={carouselRef}
+          className="h-64 sm:h-96 md:h-[40rem] relative overflow-hidden rounded-lg shadow-lg bg-gradient-to-r from-blue-500 via-green-600 to-purple-700"
+        >
+          {[...Array(8).keys()].map((idx) => (
+            <img
+              key={idx}
+              src={`./HomepageImages/Corousel/Home${idx + 1}.jpg`}
+              alt={`slide-${idx}`}
+              className="absolute inset-0 object-cover w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out"
+            />
+          ))}
         </div>
       </div>
 
-      {/* vounteer form section*/}
-      <div className="h-[30rem] bg-gray-100 w-full sm:w-11/12 mt-5 mx-auto  md:flex md:h-96 mb-5">
-        <div className="w-full  md:h-full  text-center space-y-4 md:mt-10">
-          <h1 className="capitalize font-semibold font-sans text-2xl">Share your Volunteering Ideas</h1>
-          <form
-            className="flex flex-col"
-            action="mailto:info@admedusociety.org"
-            method="post"
-            encType="text/plain"
+      {/* Donation, Volunteer, Sponsorship section */}
+      <div className="w-11/12 mx-auto grid gap-8 grid-cols-1 md:grid-cols-3 text-center py-10">
+        {[{
+          title: "Make a Donation",
+          image: "donation.gif",
+          description: "Your donation holds the power to create ripples of hope and transform lives.",
+        },
+        {
+          title: "Become a Volunteer",
+          image: "volunteer.gif",
+          description: "Join hands with us to paint a brighter tomorrow, one act of service at a time.",
+        },
+        {
+          title: "Sponsorship",
+          image: "sponsor.gif",
+          description: "Invest in communities and create a legacy of empowerment and transformation.",
+        }].map((item, idx) => (
+          <div
+            key={idx}
+            className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:shadow-xl"
           >
-            <input
-              className="m-auto border-solid border-black  px-2 border-1"
-              type="text"
-              name="Name"
-              placeholder="Your Name"
-              required
-            ></input>
-            <input
-              className="m-auto mt-1 border-solid border-black  px-2 border-1"
-              type="email"
-              name="Mail"
-              placeholder="Your Email-ID"
-              required
-            ></input>
-            <input
-              className="m-auto mt-1 h-10 border-black border-solid  px-2 border-1"
-              type="text"
-              name="Feedback"
-              placeholder="Volunteering Ideas"
-              required
-            ></input>
-            <div className="m-auto mt-2 space-x-2">
-              <input
-                className="bg-black text-white w-16 px-2 py-1 rounded-lg hover:bg-cyan-700"
-                type="Submit"
-                value="Send"
-              ></input>
-              <input
-                className="bg-black text-white hover:bg-cyan-700 w-16 px-2 py-1 rounded-lg"
-                type="reset"
-                value="Reset"
-              ></input>
-            </div>
-          </form>
-        </div>
+            <img
+              className="w-24 h-24 mb-4 border-4 border-green-600 p-2 rounded-full shadow-lg"
+              src={`./HomepageImages/ThreeSlogans/${item.image}`}
+              alt={item.title}
+            />
+            <h2 className="text-2xl font-semibold mb-2 text-green-500">{item.title}</h2>
+            <p className="text-sm text-gray-600">{item.description}</p>
+          </div>
+        ))}
+      </div>
 
-        <div className="md:h-full  md:w-full h-1/2 w-full m-auto relative object-cover" ref={vounteer_corousel_ref}>
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer1.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer2.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer3.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer4.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer5.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer6.jpg"
-            alt="volunteer"
-          />
-          <img
-            className=" absolute p-1 h-full w-full"
-            src="./HomepageImages/volunteerform/volunteer7.jpg"
-            alt="volunteer"
-          />
+      {/* Volunteer Ideas Form */}
+      <div className="w-11/12 mx-auto bg-white rounded-lg shadow-lg overflow-hidden my-8">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="p-8">
+            <h3 className="text-2xl font-bold mb-4 text-green-500">
+              Share Your Volunteering Ideas
+            </h3>
+            <form
+              className="space-y-4"
+              action="mailto:info@admedusociety.org"
+              method="post"
+              encType="text/plain"
+            >
+              <input
+                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                type="text"
+                name="Name"
+                placeholder="Your Name"
+                required
+              />
+              <input
+                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                type="email"
+                name="Mail"
+                placeholder="Your Email-ID"
+                required
+              />
+              <textarea
+                className="w-full border border-gray-300 p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                name="Feedback"
+                placeholder="Your Volunteering Ideas"
+                rows="5"
+                required
+              />
+              <div className="flex justify-between">
+                <input
+                  className="bg-green-600 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-green-500 transition"
+                  type="Submit"
+                  value="Send"
+                />
+                <input
+                  className="bg-red-600 text-white px-6 py-2 rounded-lg cursor-pointer hover:bg-red-700 transition"
+                  type="reset"
+                  value="Reset"
+                />
+              </div>
+            </form>
+          </div>
+
+          <div className="relative h-64 md:h-auto" ref={volunteerCarouselRef}>
+            {[...Array(7).keys()].map((idx) => (
+              <img
+                key={idx}
+                src={`./HomepageImages/volunteerform/volunteer${idx + 1}.jpg`}
+                alt={`volunteer-${idx}`}
+                className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out"
+              />
+            ))}
+          </div>
         </div>
       </div>
-      </div> 
 
-     
-    </>
+      {/* Testimonials Section */}
+      <div className="w-11/12 mx-auto bg-gray-100 rounded-lg shadow-lg py-10 my-8">
+        <h2 className="text-3xl font-bold text-center mb-8 text-green-800">What People Are Saying</h2>
+        <div className="flex flex-wrap justify-center gap-8">
+          {[{
+            name: "John Doe",
+            testimonial: "The organization has truly transformed our community. I'm proud to be a part of such a meaningful cause.",
+          },
+          {
+            name: "Jane Smith",
+            testimonial: "Volunteering here has been one of the most rewarding experiences of my life. The team is fantastic!",
+          },
+          {
+            name: "Sam Wilson",
+            testimonial: "A wonderful place to donate and support. Every contribution makes a significant impact.",
+          
+          }].map((testi, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-xl"
+            >
+             
+              <p className="text-gray-600 mb-2 text-center">{testi.testimonial}</p>
+              <p className="font-semibold text-green-500">{testi.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
   );
 };
 

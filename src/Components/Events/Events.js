@@ -40,7 +40,7 @@ const Event = () => {
 const Card = () => {
   return (
     <>
-      <div className="card w-full md:w-1/2 lg:w-1/3 p-4 bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="card w-full md:w-1/2 lg:w-1/3 p-4  bg-white rounded-lg shadow-md overflow-hidden">
         {/* event image */}
         <div className="h-40 md:h-48 lg:h-56 ">
           <img
